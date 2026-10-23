@@ -1,3 +1,4 @@
+// Sistema-acceso.cpp : Defines the entry point for the application.
 #include <iostream>
 using namespace std;
 
@@ -46,11 +47,17 @@ int main()
 	}
 	if (contrasena == PIN) {
 		cout << "Acceso Correcto" << endl;
+		cout << "Presiona Enter para salir...";
+		cin.ignore();
+		cin.get();
 		return 0;
+
 	}
 	if (intentos_fallidos == 5) {
 		cout << "Has superado el numero maximo de intentos. Has perdido la caja ha sido bloqueada" << endl;
-		return 0;
 	}
+	cout << "Presiona Enter para salir...";
+	cin.ignore();
+	cin.get();   
 	return 0;
 }
