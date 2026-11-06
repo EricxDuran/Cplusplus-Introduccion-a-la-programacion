@@ -1,4 +1,4 @@
-# Introducción a la programación - Eric Duran Clavijo - ENTI  
+# Introducción a la programación - Eric Duran - ENTI  
 
 
 ## Ejercicio 3.11
