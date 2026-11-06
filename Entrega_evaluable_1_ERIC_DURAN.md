@@ -1,6 +1,4 @@
-# Introducción a la programación
-**Autor:** Eric Duran Clavijo  
-**Centro:** ENTI  
+# Introducción a la programación - Eric Duran Clavijo - ENTI  
 
 ---
 
@@ -84,8 +82,8 @@ int main() {
     int i{1};
 
     while (i < terminos) {
-        numerador *= x;     // Calcula la potencia x^i
-        factorial *= i;     // Calcula el factorial i!
+        numerador *= x;     
+        factorial *= i;     
         e_x += numerador / factorial;
         ++i;
     }
