@@ -6,8 +6,8 @@
 * Si es par (2, 4, 6, 8, 10), imprime `"++++++++"`.
 
 ## Ejercicio 3.12
-* Para las filas donde `row` es par (10, 8, 6, 4, 2), la condición es falsa, así que imprime `>` 10 veces seguidas.
-* Para las filas donde `row` es impar (9, 7, 5, 3, 1), la condición es verdadera, así que imprime `<` 10 veces seguidas.
+* Para las filas donde row es par (10, 8, 6, 4, 2), la condición es falsa, así que imprime > 10 veces seguidas.
+* Para las filas donde row es impar (9, 7, 5, 3, 1), la condición es verdadera, así que imprime < 10 veces seguidas.
 
 ---
 
@@ -207,7 +207,7 @@ int main() {
 ---
 
 ## Ejercicio 4.6
-El programa imprime en la consola un rectángulo de 10 filas y 5 columnas formado por el carácter `@`. Lo logra utilizando dos bucles `for` anidados: el bucle exterior se ejecuta 10 veces (controlando las 10 filas) y el bucle interior se ejecuta 5 veces en cada iteración (imprimiendo cinco `@` seguidas). Al finalizar el bucle interior, se imprime un salto de línea (`\n`) para que la siguiente serie de caracteres comience en una nueva fila.
+El programa imprime en la consola un rectángulo de 10 filas y 5 columnas formado por el carácter @. Lo logra utilizando dos bucles for anidados: el bucle exterior se ejecuta 10 veces (controlando las 10 filas) y el bucle interior se ejecuta 5 veces en cada iteración (imprimiendo cinco @ seguidas). Al finalizar el bucle interior, se imprime un salto de línea (\n) para que la siguiente serie de caracteres comience en una nueva fila.
 
 ---
 
