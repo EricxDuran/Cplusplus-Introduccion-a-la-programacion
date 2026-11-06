@@ -1,7 +1,7 @@
 # C++ | Introducción a la Programación
 
 **Autor:** Eric Duran Clavijo  
-**Centro:** ENTI  
+**Centro:** ENTI (Escola de Noves Tecnologies Interactives) 
 
 ---
 
