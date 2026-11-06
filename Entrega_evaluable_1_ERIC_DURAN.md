@@ -1,6 +1,5 @@
 # Introducción a la programación - Eric Duran Clavijo - ENTI  
 
----
 
 ## Ejercicio 3.11
 * Si es impar (1, 3, 5, 7, 9), imprime `"****"`.
