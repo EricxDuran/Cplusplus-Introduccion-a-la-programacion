@@ -1,400 +1,385 @@
 Eric Duran Clavijo - ENTI - Introducción a la programación
 
-
-
-#### **3.11**
-
-Si es impar (1, 3, 5, 7, 9), imprime "\*\*\*\*".
-
+3.11
+Si es impar (1, 3, 5, 7, 9), imprime "****".
 Si es par (2, 4, 6, 8, 10), imprime "++++++++"
 
-
-
-#### **3.12**
-
+3.12
 Para las filas donde row es par (10, 8, 6, 4, 2), la condición es falsa, así que imprime 10 veces seguidas.
-
-
 
 Para las filas donde row es impar (9, 7, 5, 3, 1), la condición es verdadera, así que imprime < 10 veces seguidas.
 
+3.25
+
+a)
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Introduce un entero no negativo para calcular su factorial: ";
+    cin >> n;
+
+    unsigned long long factorial{1};
+    int i{1};
+
+    while (i <= n) {
+        factorial *= i;
+        ++i;
+    }
+
+    cout << n << "! = " << factorial << "\n";
+    return 0;
+}
 
 
-#### **3.25**
+b)
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int terminos;
+    cout << "Introduce el numero de terminos para la precision de 'e': ";
+    cin >> terminos;
+
+    double e{1.0};
+    double factorial{1.0};
+    int i{1};
+
+    while (i < terminos) {
+        factorial *= i;
+        e += 1.0 / factorial;
+        ++i;
+    }
+
+    cout << "El valor estimado de e con " << terminos << " terminos es: " << e << "\n";
+    return 0;
+}
+
+
+c)
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    double x;
+    int terminos;
+ 
+    cout << "Introduce el valor del exponente x: ";
+    cin >> x;
+    cout << "Introduce el numero de terminos para la precision: ";
+    cin >> terminos;
+
+    double e_x{1.0};
+    double numerador{1.0};
+    double factorial{1.0};
+    int i{1};
+
+    while (i < terminos) {
+        numerador *= x;     // Calcula la potencia x^i
+        factorial *= i;     // Calcula el factorial i!
+        e_x += numerador / factorial;
+        ++i;
+    }
+
+    cout << "El valor estimado de e^" << x << " es: " << e_x << "\n";
+    return 0;
+}
 
 
 
-##### a)
+3.26
 
-\#include <iostream>
+1) CIFRADO
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero;
+    cout << "Introduce un entero de cuatro cifras a cifrar: ";
+    cin >> numero;
+
+    int d1 = numero / 1000;
+    int d2 = (numero / 100) % 10;
+    int d3 = (numero / 10) % 10;
+    int d4 = numero % 10;
+
+    d1 = (d1 + 7) % 10;
+    d2 = (d2 + 7) % 10;
+    d3 = (d3 + 7) % 10;
+    d4 = (d4 + 7) % 10;
+
+    int temp = d1;
+    d1 = d3;
+    d3 = temp;
+
+    temp = d2;
+    d2 = d4;
+    d4 = temp;
+
+    cout << "El numero cifrado es: " << d1 << d2 << d3 << d4 << "\n";
+
+    return 0;
+}
+
+
+2) DESCIFRADO
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero_cifrado;
+    cout << "Introduce un entero cifrado de cuatro cifras a descifrar: ";
+    cin >> numero_cifrado;
+
+    int d1 = numero_cifrado / 1000;
+    int d2 = (numero_cifrado / 100) % 10;
+    int d3 = (numero_cifrado / 10) % 10;
+    int d4 = numero_cifrado % 10;
+
+    int temp = d1;
+    d1 = d3;
+    d3 = temp;
+
+    temp = d2;
+    d2 = d4;
+    d4 = temp;
+
+    d1 = (d1 + 3) % 10;
+    d2 = (d2 + 3) % 10;
+    d3 = (d3 + 3) % 10;
+    d4 = (d4 + 3) % 10;
+
+    cout << "El numero original descifrado es: " << d1 << d2 << d3 << d4 << "\n";
+
+    return 0;
+}
+
+
+
+4.15
+
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
-
-
 int main() {
+    double pi = 0.0;
+    double divisor = 1.0;
+    int signo = 1;
+    bool encontrado = false;
 
-&#x20;   int n;
+    cout << "Accuracy set at: 200000\n\n";
+    cout << "term\tpi\n";
 
-&#x20;   cout << "Introduce un entero no negativo para calcular su factorial: ";
+    for (int i = 1; i <= 200000; i++) {
+        pi += signo * (4.0 / divisor);
+ 
+        if (i <= 5) {
+            cout << i << "\t" << fixed << setprecision(8) << pi << "\n";
+        } else if (i == 6) {
+            cout << "...\n";
+        }
 
-&#x20;   cin >> n;
+        if (!encontrado && pi >= 3.14159 && pi < 3.14160) {
+            cout << "\nEl valor comienza por 3.14159 por primera vez en el termino: " << i << "\n";
+            encontrado = true;
+        }
 
+        divisor += 2.0;
+        signo *= -1;
+    }
 
-
-&#x20;   unsigned long long factorial{1};
-
-&#x20;   int i{1};
-
-
-
-&#x20;   while (i <= n) {
-
-&#x20;       factorial \*= i;
-
-&#x20;       ++i;
-
-&#x20;   }
-
-
-
-&#x20;   cout << n << "! = " << factorial << "\\n";
-
-&#x20;   return 0;
-
+    return 0;
 }
 
 
 
 
+4.6
+El programa imprime en la consola un rectángulo de 10 filas y 5 columnas formado por el carácter @. Lo logra utilizando dos bucles for anidados: el bucle exterior se ejecuta 10 veces (controlando las 10 filas) y el bucle interior se ejecuta 5 veces en cada iteración (imprimiendo cinco @ seguidas). Al finalizar el bucle interior, se imprime un salto de línea (\n) para que la siguiente serie de caracteres comience en una nueva fila.
 
-##### b)
-
-
-
-\#include <iostream>
-
+4.8
+#include <iostream>
 using namespace std;
 
-
-
 int main() {
+    int producto = 1;
+    for (int i = 1; i <= 15; i += 2) {
+        producto *= i;
+    }
 
-&#x20;   int terminos;
-
-&#x20;   cout << "Introduce el numero de terminos para la precision de 'e': ";
-
-&#x20;   cin >> terminos;
-
-
-
-&#x20;   double e{1.0};
-
-&#x20;   double factorial{1.0};
-
-&#x20;   int i{1};
-
-
-
-&#x20;   while (i < terminos) {
-
-&#x20;       factorial \*= i; 
-
-&#x20;       e += 1.0 / factorial;
-
-&#x20;       ++i;
-
-&#x20;   }
-
-
-
-&#x20;   cout << "El valor estimado de e con " << terminos << " terminos es: " << e << "\\n";
-
-&#x20;   return 0;
-
+    cout << "El producto de los enteros impares del 1 al 15 es: " << producto << "\n";
+ 
+    return 0;
 }
 
 
 
+5.1
+
+a) 7.5
+b) 7.0
+c) 0.0
+d) 0.0
+e) 6.4
+f) -6.0
+g) -14.0
 
 
-##### c)
+
+5.6
 
 
-
-
-
-\#include <iostream>
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
-
+double calculateCharges(double hours) {
+    double charge = 20.00;
+    if (hours > 3.0) {
+        charge += ceil(hours - 3.0) * 5.00;
+    }
+ 
+    if (charge > 50.00) {
+        charge = 50.00;     }
+ 
+    return charge;
+}
 
 int main() {
-
-&#x20;   double x;
-
-&#x20;   int terminos;
-
-&#x20;   
-
-&#x20;   cout << "Introduce el valor del exponente x: ";
-
-&#x20;   cin >> x;
-
-&#x20;   cout << "Introduce el numero de terminos para la precision: ";
-
-&#x20;   cin >> terminos;
-
-
-
-&#x20;   double e\_x{1.0};
-
-&#x20;   double numerador{1.0};
-
-&#x20;   double factorial{1.0};
-
-&#x20;   int i{1};
-
-
-
-&#x20;   while (i < terminos) {
-
-&#x20;       numerador \*= x;     // Calcula la potencia x^i
-
-&#x20;       factorial \*= i;     // Calcula el factorial i!
-
-&#x20;       e\_x += numerador / factorial;
-
-&#x20;       ++i;
-
-&#x20;   }
-
-
-
-&#x20;   cout << "El valor estimado de e^" << x << " es: " << e\_x << "\\n";
-
-&#x20;   return 0;
-
+    double hours1, hours2, hours3;
+ 
+    cout << "Horas coche 1: ";
+    cin >> hours1;
+    cout << "Horas coche 2: ";
+    cin >> hours2;
+    cout << "Horas coche 3: ";
+    cin >> hours3;
+ 
+    double charge1 = calculateCharges(hours1);
+    double charge2 = calculateCharges(hours2);
+    double charge3 = calculateCharges(hours3);
+ 
+    double totalHours = hours1 + hours2 + hours3;
+    double totalCharge = charge1 + charge2 + charge3;
+ 
+    cout << "\n";
+    cout << left << setw(10) << "Car" << setw(10) << "Hours" << "Charge\n";
+ 
+    cout << left << setw(10) << "1";
+    cout << fixed << setprecision(1) << setw(10) << hours1;
+    cout << fixed << setprecision(2) << charge1 << "\n";
+ 
+    cout << left << setw(10) << "2";
+    cout << fixed << setprecision(1) << setw(10) << hours2;
+    cout << fixed << setprecision(2) << charge2 << "\n";
+ 
+    cout << left << setw(10) << "3";
+    cout << fixed << setprecision(1) << setw(10) << hours3;
+    cout << fixed << setprecision(2) << charge3 << "\n";
+ 
+    cout << left << setw(10) << "TOTAL";
+    cout << fixed << setprecision(1) << setw(10) << totalHours;
+    cout << fixed << setprecision(2) << totalCharge << "\n";
+ 
+    return 0;
 }
 
 
 
+5.18
 
-
-
-
-#### **3.26**
-
-
-
-##### 1\) CIFRADO
-
-
-
-\#include <iostream>
-
+#include <iostream>
 using namespace std;
 
-
+int invertirCifras(int numero) {
+    int invertido = 0;
+ 
+    while (numero != 0) {
+        int digito = numero % 10;
+        invertido = invertido * 10 + digito;
+        numero /= 10;
+    }
+ 
+    return invertido;
+}
 
 int main() {
-
-&#x20;   int numero;
-
-&#x20;   cout << "Introduce un entero de cuatro cifras a cifrar: ";
-
-&#x20;   cin >> numero;
-
-
-
-&#x20;   int d1 = numero / 1000;
-
-&#x20;   int d2 = (numero / 100) % 10;
-
-&#x20;   int d3 = (numero / 10) % 10;
-
-&#x20;   int d4 = numero % 10;
-
-
-
-&#x20;   d1 = (d1 + 7) % 10;
-
-&#x20;   d2 = (d2 + 7) % 10;
-
-&#x20;   d3 = (d3 + 7) % 10;
-
-&#x20;   d4 = (d4 + 7) % 10;
-
-
-
-&#x20;   int temp = d1;
-
-&#x20;   d1 = d3;
-
-&#x20;   d3 = temp;
-
-
-
-&#x20;   temp = d2;
-
-&#x20;   d2 = d4;
-
-&#x20;   d4 = temp;
-
-
-
-&#x20;   cout << "El numero cifrado es: " << d1 << d2 << d3 << d4 << "\\n";
-
-
-
-&#x20;   return 0;
-
+    int numero_prueba = 7631;
+ 
+    cout << "Numero original: " << numero_prueba << "\n";
+    cout << "Numero invertido: " << invertirCifras(numero_prueba) << "\n";
+ 
+    return 0;
 }
 
 
 
+5.21
 
-
-##### 2\) DESCIFRADO
-
-
-
-\#include <iostream>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-
+int flip() {
+    return rand() % 2;
+}
 
 int main() {
+    srand(time(0));
+ 
+    int caras = 0;
+    int cruces = 0;
 
-&#x20;   int numero\_cifrado;
+    for (int i = 1; i <= 100; i++) {
+        if (flip() == 1) {
+            cout << "Heads\n";
+            caras++;
+        } else {
+            cout << "Tails\n";
+            cruces++;
+        }
+    }
 
-&#x20;   cout << "Introduce un entero cifrado de cuatro cifras a descifrar: ";
+    cout << "\nTotal de caras (Heads): " << caras << "\n";
+    cout << "Total de cruces (Tails): " << cruces << "\n";
 
-&#x20;   cin >> numero\_cifrado;
-
-
-
-&#x20;   int d1 = numero\_cifrado / 1000;
-
-&#x20;   int d2 = (numero\_cifrado / 100) % 10;
-
-&#x20;   int d3 = (numero\_cifrado / 10) % 10;
-
-&#x20;   int d4 = numero\_cifrado % 10;
-
-
-
-&#x20;   int temp = d1;
-
-&#x20;   d1 = d3;
-
-&#x20;   d3 = temp;
-
-
-
-&#x20;   temp = d2;
-
-&#x20;   d2 = d4;
-
-&#x20;   d4 = temp;
-
-
-
-&#x20;   d1 = (d1 + 3) % 10;
-
-&#x20;   d2 = (d2 + 3) % 10;
-
-&#x20;   d3 = (d3 + 3) % 10;
-
-&#x20;   d4 = (d4 + 3) % 10;
-
-
-
-&#x20;   cout << "El numero original descifrado es: " << d1 << d2 << d3 << d4 << "\\n";
-
-
-
-&#x20;   return 0;
-
+    return 0;
 }
 
 
+5.26
 
-
-
-
-
-## **4.15**
-
-
-
-\#include <iostream>
-
-\#include <iomanip>
-
-
-
+#include <iostream>
 using namespace std;
 
+void moverDiscos(int cantidad_discos, int varilla_origen, int varilla_destino, int varilla_ayuda) {
 
+    if (cantidad_discos == 1) {
+        cout << "Muevo un disco de la varilla " << varilla_origen << " a la varilla " << varilla_destino << "\n";
+        return;
+    }
 
-int main() {
+    moverDiscos(cantidad_discos - 1, varilla_origen, varilla_ayuda, varilla_destino);
 
-&#x20;   double pi = 0.0;
+    cout << "Muevo un disco de la varilla " << varilla_origen << " a la varilla " << varilla_destino << "\n";
 
-&#x20;   double divisor = 1.0;
-
-&#x20;   int signo = 1;
-
-&#x20;   bool encontrado = false;
-
-
-
-&#x20;   cout << "Accuracy set at: 200000\\n\\n";
-
-&#x20;   cout << "term\\tpi\\n";
-
-
-
-&#x20;   for (int i = 1; i <= 200000; i++) {
-
-&#x20;       pi += signo \* (4.0 / divisor);
-
-&#x20;       
-
-&#x20;       if (i <= 5) {
-
-&#x20;           cout << i << "\\t" << fixed << setprecision(8) << pi << "\\n";
-
-&#x20;       } else if (i == 6) {
-
-&#x20;           cout << "...\\n";
-
-&#x20;       }
-
-
-
-&#x20;       if (!encontrado \&\& pi >= 3.14159 \&\& pi < 3.14160) {
-
-&#x20;           cout << "\\nEl valor comienza por 3.14159 por primera vez en el termino: " << i << "\\n";
-
-&#x20;           encontrado = true;
-
-&#x20;       }
-
-
-
-&#x20;       divisor += 2.0;
-
-&#x20;       signo \*= -1;
-
-&#x20;   }
-
-
-
-&#x20;   return 0;
-
+    moverDiscos(cantidad_discos - 1, varilla_ayuda, varilla_destino, varilla_origen);
 }
 
+int main() {
+    moverDiscos(3, 1, 3, 2);
+
+    return 0;
+}
