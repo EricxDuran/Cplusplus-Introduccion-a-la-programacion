@@ -4,7 +4,7 @@ Introducción a la programación - Eric Duran - ENTI
 ---
 
 ## Ejercicio 3.11
-* Si es impar (1, 3, 5, 7, 9), imprime `"****"`.
+* Si es impar (1, 3, 5, 7, 9), imprime `"****"`. 
 * Si es par (2, 4, 6, 8, 10), imprime `"++++++++"`.
 
 ## Ejercicio 3.12
