@@ -36,7 +36,7 @@ int main() {
 
 		}
 	}	
-	cout << "Hay un total de " << alertas << "alertas.." << endl;
+	cout << "Hay un total de " << alertas << " alertas.." << endl;
 	cout << "Los paquetes son: " << paquetes.size() + sospechosos.size() << endl;
 	cout << "Los sospechosos son: " << endl;
 	for (int i = 0; i < sospechosos.size(); i++)
